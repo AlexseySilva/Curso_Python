@@ -1,21 +1,16 @@
-print("\ Estimativa da Redução de Vida de um Fumante \n")
+print("\nEstimativa da redução de vida de um fumante\n")
 
-#Entrada de dados
-qtde_cigarros = int(input("Quantidade de Cigarros Fumados por Dia: "))
-anos_fum = int(input("Quantidade de anos Fumando: "))
+# Entrada de dados
+qtdeCigarros = int(input("Quantidade de cigarros fumados por dia: "))
+anosFumando = int(input("Quantidade de anos fumando: "))
 
-#Calculo de redução de tempos de vida
-#1 ano = 365 dias
-qtde_dias = anos_fum * 365
-total_cigarros = qtde_dias * qtde_cigarros
+# Cálculo de redução de tempo de vida
+qtdeDias = anosFumando * 365
+totalCigarros = qtdeDias * qtdeCigarros
 
-#1 dia = 24 horas = 1440 min = 86400 seg
-#1 hora = 60 min = 3600 seg  
-#1 min = 60 seg
+minutosPerdidos = totalCigarros * 10
+diasPerdidos = float(minutosPerdidos / 1440)
 
-minutos_perdidos = total_cigarros * 10
-dias_perdidos = float(minutos_perdidos / 1440)
-
-#Imprimindo resultado na tela
+# Imprimindo resultado na tela
 print("")
-print("Dias de Vida Perdidos: %d" %dias_perdidos)
+print(f"Dias de vida perdidos: {diasPerdidos:.0f}") 

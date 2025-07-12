@@ -1,5 +1,5 @@
-cod_beb = input("digite o codigo da bebida:")
-if('bac' in cod_beb):
-     print('bebida alcolica')
+codigoBebida = input("Digite o código da bebida:")
+if 'bac' in codigoBebida:
+    print('Bebida alcoólica')
 else:
-    print('bebida refrigerante')
+    print('Bebida não alcoólica') 
