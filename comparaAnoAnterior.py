@@ -1,0 +1,32 @@
+# Lista de produtos
+produtos = ['iphone', 'galaxy', 'ipad', 'tv', 'máquina de café', 'kindle', 'geladeira', 'adega', 'notebook dell', 'notebook hp', 'notebook asus', 'microsoft surface', 'webcam', 'caixa de som', 'microfone', 'câmera canon']
+# Vendas de 2019
+vendas2019 = [558147, 712350, 573823, 405252, 718654, 531580, 973139, 892292, 422760, 154753, 887061, 438508, 237467, 489705, 328311, 591120]
+# Vendas de 2020
+vendas2020 = [951642, 244295, 26964, 787604, 867660, 78830, 710331, 646016, 694913, 539704, 324831, 667179, 295633, 725316, 644622, 994303]
+
+import pandas as pd
+lista = []
+
+# Percorre cada produto e compara as vendas de 2020 com 2019
+for i, produto in enumerate(produtos):
+    if vendas2020[i] > vendas2019[i]:
+        variacao = float((vendas2020[i] / vendas2019[i]) - 1)
+        registros = [
+            f'{produto}',
+            f'{vendas2019[i]:_}'.replace('_', '.'),
+            f'{vendas2020[i]:_}'.replace('_', '.'),
+            f'{variacao:.3}'
+        ]
+        lista.append(registros)
+
+# Cria um DataFrame com os resultados
+df = pd.DataFrame(lista, columns=['Produto', 'Vendas 2019 (R$)', 'Vendas 2020 (R$)', 'Variação %'])
+# Converte a coluna de variação para numérico
+df['Variação %'] = df['Variação %'].apply(pd.to_numeric)
+# Define o formato de exibição dos números decimais
+pd.options.display.float_format = '{:.2%}'.format
+# Ordena o DataFrame pela variação
+df = df.sort_values(by=['Variação %'])
+# Exibe o DataFrame
+print(df)
